@@ -43,7 +43,7 @@ dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs"
 
 id roboshop
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
     VALIDATE $? "Creating roboshop system user"
@@ -80,7 +80,7 @@ dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs"
 
 STATUS=$(mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
-if [ STATUS -lt 0]
+if [ STATUS -lt 0 ]
 then 
     mongosh --host mongodb.hanuops.shop </app/db/master-data.js &>>$LOG_FILE
     VALIDATE $? "Loading data into MongoDB"

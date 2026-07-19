@@ -1,12 +1,5 @@
 #!/bin/bash
 
-echo "User: $(whoami)"
-echo "PATH: $PATH"
-type aws
-which aws
-aws --version
-exit 0
-
 AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-01bc7ebe005fb1cb2" # replace with your SG ID
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "frontend")

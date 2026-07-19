@@ -69,6 +69,7 @@ VALIDATE $? "installing dependancies"
 cp "$SCRIPT_DIR/catalogue.service" /etc/systemd/system/catalogue.service
 VALIDATE $? "copying catalogue service"
 
+systemctl unmask catalogue
 systemctl daemon-reload &>>$LOG_FILE
 systemctl enable catalogue &>>$LOG_FILE
 systemctl start catalogue

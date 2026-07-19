@@ -61,10 +61,10 @@ cd /app
 unzip /tmp/shipping.zip &>>$LOG_FILE
 VALIDATE $? "unzipping shipping"
 
-mvn clean package 
+mvn clean package &>>$LOG_FILE
 VALIDATE $? "Packaging the shipping application"
 
-mv target/shipping-1.0.jar shipping.jar 
+mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
 VALIDATE $? "Moving and renaming Jar file"
 
 cp "$SCRIPT_DIR/shipping.service" /etc/systemd/system/shipping.service

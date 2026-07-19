@@ -66,7 +66,7 @@ VALIDATE $? "unzipping catalogue"
 npm install &>>$LOG_FILE
 VALIDATE $? "installing dependancies"
 
-cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
+cp "$SCRIPT_DIR/catalogue.service" /etc/systemd/system/catalogue.service
 VALIDATE $? "copying catalogue service"
 
 systemctl daemon-reload &>>$LOG_FILE
@@ -80,7 +80,7 @@ dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs"
 
 STATUS=$(mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
-if [ STATUS -lt 0 ]
+if [ $STATUS -lt 0 ]
 then 
     mongosh --host mongodb.hanuops.shop </app/db/master-data.js &>>$LOG_FILE
     VALIDATE $? "Loading data into MongoDB"

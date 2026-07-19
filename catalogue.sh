@@ -69,7 +69,6 @@ VALIDATE $? "installing dependancies"
 cp "$SCRIPT_DIR/catalogue.service" /etc/systemd/system/catalogue.service
 VALIDATE $? "copying catalogue service"
 
-systemctl unmask catalogue
 systemctl daemon-reload &>>$LOG_FILE
 systemctl enable catalogue &>>$LOG_FILE
 systemctl start catalogue
@@ -80,7 +79,7 @@ cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs"
 
-STATUS=$(mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+STATUS=$(mongosh --host mongodb.hanuops.shop --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 if [ $STATUS -lt 0 ]
 then 
     mongosh --host mongodb.hanuops.shop </app/db/master-data.js &>>$LOG_FILE
